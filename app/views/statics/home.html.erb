@@ -4,8 +4,8 @@
 <h2 class="ul-list-header">Shelter</h2>
 <table class="ul-list-section">
   <tr>
-    <td class="checkbox-column"><input type="checkbox" id="Tent" class="list-check" /></td>
-    <td class="list-item-name"><label for="Tent">Tent / Tarp / Bivy / Hammock</label></td>
+    <td class="checkbox-column"><input type="checkbox" id="Tent" class="list-check tent-popover" checked="checked" rel="popover" data-placement="left" data-content="If you click me I get crossed out!" data-original-title="Look What I Can Do" /></td>
+    <td class="list-item-name"><label for="Tent" class="cross-out">Tent / Tarp / Bivy / Hammock <i class="optional">(optional)</i></label></td>
     <td><%= link_to image_tag("rei.jpg", alt: "REI Tent / Tarp / Bivy / Hammock", class: "list-merchant", rel: "tooltip", title: "Tents / Tarps / Bivys / Hammocks from REI"), "http://www.avantlink.com/click.php?tt=cl&mi=10248&pw=128581&url=http%3A%2F%2Fwww.rei.com%2Fcategory%2F4500001_Tents%2Band%2BShelters" %></td>
     <td><%= link_to image_tag("backcountry.jpg", alt: "Backcountry Tent / Tarp / Bivy / Hammock", class: "list-merchant", rel: "tooltip", title: "Tents / Tarps / Bivys / Hammocks at Backcountry"), "http://www.avantlink.com/click.php?tt=cl&mi=10060&pw=128581&url=http%3A%2F%2Fwww.backcountry.com%2Ftents" %></td>
     <td><%= link_to image_tag("amazon.jpg", alt: "Amazon Tent / Tarp / Bivy / Hammock", class: "list-merchant", rel: "tooltip", title: "Tents / Tarps / Bivys / Hammocks from Amazon"), "http://www.amazon.com/gp/search?ie=UTF8&camp=1789&creative=9325&index=sporting&keywords=tent&linkCode=ur2&tag=scrowed-20" %></td>
@@ -583,10 +583,15 @@
 </table>
 
 <script type="text/javascript">
-    $("[rel=tooltip]").tooltip();
+  $("[rel=tooltip]").tooltip();
 
-    $("input[type='checkbox']").change(function() {
-      $(this).parent().siblings(".list-item-name").children("label").toggleClass("cross-out");
-    });
+  $("input[type='checkbox']").change(function() {
+    $(this).parent().siblings(".list-item-name").children("label").toggleClass("cross-out");
+  });
+
+  $('.tent-popover').popover('show');
+  $(".tent-popover").click(function() {
+    $('.tent-popover').popover('destroy');
+  });
 </script>
 
